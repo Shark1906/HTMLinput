@@ -21,6 +21,7 @@
         <div>
             <label for="pwd">password input type: </label>
             <input type="password" id="pwd" name="pwd">
+            <error-output class="pwd-error" for="pwd"></error-output>
         </div>
         <div>
             <label for="email">email input type: </label>
@@ -95,6 +96,17 @@
                 }
             });
         
+        const pass = document.querySelector('#pwd');
+            const passError = document.querySelector('.pwd-error');
+            pass.addEventListener('input',function(){
+                let passRegex = RegExp('^[A-Za-z]{8,}$');
+                if (passRegex.test(pass.value)) {
+                    passError.textContent = "";
+                } else {
+                    passError.textContent = "Password is Incorrect";
+                }
+            });
+
         const salary = document.querySelector('#salary');
         const output = document.querySelector('.salary-output');
         output.textContent = salary.value;
